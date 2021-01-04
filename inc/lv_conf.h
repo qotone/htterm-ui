@@ -388,10 +388,10 @@ typedef void * lv_indev_drv_user_data_t;            /*Type of user data in the i
 #define LV_THEME_DEFAULT_COLOR_PRIMARY      lv_color_hex(0x01a2b1) //01bc87
 #define LV_THEME_DEFAULT_COLOR_SECONDARY    lv_color_hex(0x44d1b6)
 #define LV_THEME_DEFAULT_FLAG               LV_THEME_MATERIAL_FLAG_DARK
-#define LV_THEME_DEFAULT_FONT_SMALL         &lv_font_montserrat_16
-#define LV_THEME_DEFAULT_FONT_NORMAL        &lv_font_montserrat_16
-#define LV_THEME_DEFAULT_FONT_SUBTITLE      &lv_font_montserrat_16
-#define LV_THEME_DEFAULT_FONT_TITLE         &lv_font_montserrat_16
+#define LV_THEME_DEFAULT_FONT_SMALL         &lv_font_montserrat_28
+#define LV_THEME_DEFAULT_FONT_NORMAL        &lv_font_montserrat_28
+#define LV_THEME_DEFAULT_FONT_SUBTITLE      &lv_font_montserrat_28
+#define LV_THEME_DEFAULT_FONT_TITLE         &lv_font_montserrat_28
 
 /* #define LV_THEME_DEFAULT_FONT_SMALL         &puhui_regular_20 */
 /* #define LV_THEME_DEFAULT_FONT_NORMAL        &puhui_regular_20 */
@@ -415,13 +415,13 @@ typedef void * lv_indev_drv_user_data_t;            /*Type of user data in the i
 #define LV_FONT_MONTSERRAT_10    0
 #define LV_FONT_MONTSERRAT_12    0
 #define LV_FONT_MONTSERRAT_14    0
-#define LV_FONT_MONTSERRAT_16    1
+#define LV_FONT_MONTSERRAT_16    0
 #define LV_FONT_MONTSERRAT_18    0
 #define LV_FONT_MONTSERRAT_20    0
 #define LV_FONT_MONTSERRAT_22    0
-#define LV_FONT_MONTSERRAT_24    0
+#define LV_FONT_MONTSERRAT_24    1
 #define LV_FONT_MONTSERRAT_26    0
-#define LV_FONT_MONTSERRAT_28    0
+#define LV_FONT_MONTSERRAT_28    1
 #define LV_FONT_MONTSERRAT_30    0
 #define LV_FONT_MONTSERRAT_32    0
 #define LV_FONT_MONTSERRAT_34    0
@@ -450,8 +450,10 @@ typedef void * lv_indev_drv_user_data_t;            /*Type of user data in the i
  * #define LV_FONT_CUSTOM_DECLARE LV_FONT_DECLARE(my_font_1) \
  *                                LV_FONT_DECLARE(my_font_2)
  */
-#define LV_FONT_CUSTOM_DECLARE LV_FONT_DECLARE(puhui_regular_16) \
-        LV_FONT_DECLARE(puhui_regular_18) \
+#define LV_FONT_CUSTOM_DECLARE LV_FONT_DECLARE(puhui_regular_50) \
+        LV_FONT_DECLARE(puhui_regular_42) \
+        LV_FONT_DECLARE(puhui_regular_36) \
+        LV_FONT_DECLARE(puhui_regular_32) \
         LV_FONT_DECLARE(puhui_regular_20) \
         LV_FONT_DECLARE(puhui_regular_24) \
         LV_FONT_DECLARE(puhui_regular_28)

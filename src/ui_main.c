@@ -28,8 +28,12 @@
 
 #define WIDGET_PAD_HEIGHT    (15)
 #define WIDGET_PAD_INNER     (5)
+#define IMG_PAD              (50)
 #define COLOR_FOCUS          (0x1abc9c) // 0x19d3da
 #define COLOR_MENU_BG        (0x534e52) //686d76
+#define RES_ROOT             "/nfsroot/hi3531d/v600/app/" /* "/root/" */ // /* /nfsroot/hi3531d/v600/app/ */
+
+
 
 static pthread_t tid;
 static int lv_running = 0, lv_w = 1280, lv_h = 1024;
@@ -149,6 +153,10 @@ void calling_ctrl_panel()
     lv_obj_set_style_local_text_font(dd_speed, LV_DROPDOWN_PART_SCROLLBAR, LV_STATE_DEFAULT, font_small);
     lv_obj_set_style_local_text_font(dd_speed, LV_DROPDOWN_PART_LIST, LV_STATE_DEFAULT, font_small);
     lv_obj_set_style_local_pattern_opa(dd_speed, LV_DROPDOWN_PART_SCROLLBAR, LV_STATE_DEFAULT, LV_OPA_90);
+
+#define    LV_SYMBOL_MY "\xEF\x81\xB8"
+
+    lv_dropdown_set_symbol(dd_speed, LV_SYMBOL_MY);
     lv_obj_align(dd_speed, label_speed, LV_ALIGN_OUT_BOTTOM_LEFT, 0, WIDGET_PAD_INNER);
     lv_dropdown_set_options(dd_speed, "256K\n512K\n768K\n1024K\n1280K\n1536K\n1792K\n2048K\n2304K\n2560K\n2816K\n3072K\n3328K\n3500K\n4000K\n5000K\n6000K");
     lv_obj_set_width_fit(dd_speed, lv_obj_get_width_fit(sub_page) - lv_obj_get_x(dd_speed));
@@ -658,11 +666,11 @@ static void list_btn_event_cb(lv_obj_t *btn, lv_event_t event)
 
 /* if(event == LV_EVENT_KEY){ */
 
-        /*     uint32_t * key = (uint32_t *)lv_event_get_data(); */
-        /*     printf("%s%d\n","key pressed :",*key); */
+    /*     uint32_t * key = (uint32_t *)lv_event_get_data(); */
+    /*     printf("%s%d\n","key pressed :",*key); */
 /*     if(*key == LV_KEY_ESC) */
-        /*         tab_menu_refresh_group(); */
-        /* } */
+    /*         tab_menu_refresh_group(); */
+    /* } */
 #if 0
     uint32_t * key = (uint32_t *)lv_event_get_data();
     printf("%s%d\n","key pressed :",*key);
@@ -679,6 +687,8 @@ static void list_btn_event_cb(lv_obj_t *btn, lv_event_t event)
     }
 #endif
 }
+
+#define LIST_ITEM_HEIGHT    (80)
 
 static void menu_btn_event_cb(lv_obj_t * btn, lv_event_t event)
 {
@@ -703,7 +713,7 @@ static void menu_btn_event_cb(lv_obj_t * btn, lv_event_t event)
 
 
 
-            lv_obj_set_size(btn, lv_page_get_width_fit(list), 60);
+            lv_obj_set_size(btn, lv_page_get_width_fit(list), LIST_ITEM_HEIGHT);
             lv_obj_clean_style_list(btn, LV_BTN_PART_MAIN);
             lv_obj_add_style(btn, LV_BTN_PART_MAIN, &style_btn);
             lv_obj_add_protect(btn, LV_PROTECT_PRESS_LOST);
@@ -717,11 +727,11 @@ static void menu_btn_event_cb(lv_obj_t * btn, lv_event_t event)
             lv_obj_align(label_list, NULL, LV_ALIGN_CENTER, 0, 0);
 
             lv_obj_t *img_left =  lv_img_create(btn, NULL);
-            lv_img_set_src(img_left, "/nfsroot/hi3531d/v600/app/assert/monitor_28.png");
-            lv_obj_align(img_left, NULL, LV_ALIGN_IN_LEFT_MID, 50, 0);
+            lv_img_set_src(img_left, RES_ROOT"assert/monitor_40.png");
+            lv_obj_align(img_left, NULL, LV_ALIGN_IN_LEFT_MID, IMG_PAD, 0);
 
             lv_obj_t *img_right =  lv_img_create(btn, NULL);
-            lv_img_set_src(img_right, "/nfsroot/hi3531d/v600/app/assert/right_28.png");
+            lv_img_set_src(img_right, RES_ROOT"assert/right_28.png");
             lv_obj_align(img_right, NULL, LV_ALIGN_IN_RIGHT_MID, -10, 0);
 
 
@@ -733,7 +743,7 @@ static void menu_btn_event_cb(lv_obj_t * btn, lv_event_t event)
 
 
             btn = lv_obj_create(list, NULL);
-            lv_obj_set_size(btn, lv_page_get_width_fit(list), 60);
+            lv_obj_set_size(btn, lv_page_get_width_fit(list), LIST_ITEM_HEIGHT);
             lv_obj_clean_style_list(btn, LV_BTN_PART_MAIN);
             lv_obj_add_style(btn, LV_BTN_PART_MAIN, &style_btn);
             lv_obj_add_protect(btn, LV_PROTECT_PRESS_LOST);
@@ -748,11 +758,11 @@ static void menu_btn_event_cb(lv_obj_t * btn, lv_event_t event)
 
 
             img_left =  lv_img_create(btn, NULL);
-            lv_img_set_src(img_left, "/nfsroot/hi3531d/v600/app/assert/video_28.png");
-            lv_obj_align(img_left, NULL, LV_ALIGN_IN_LEFT_MID, 50, 0);
+            lv_img_set_src(img_left, RES_ROOT"assert/video_40.png");
+            lv_obj_align(img_left, NULL, LV_ALIGN_IN_LEFT_MID, IMG_PAD, 0);
 
             img_right =  lv_img_create(btn, NULL);
-            lv_img_set_src(img_right, "/nfsroot/hi3531d/v600/app/assert/right_28.png");
+            lv_img_set_src(img_right, RES_ROOT"assert/right_28.png");
             lv_obj_align(img_right, NULL, LV_ALIGN_IN_RIGHT_MID, -10, 0);
 
             border = lv_img_create(btn, NULL);
@@ -763,7 +773,7 @@ static void menu_btn_event_cb(lv_obj_t * btn, lv_event_t event)
 
             btn = lv_obj_create(list, NULL);
 
-            lv_obj_set_size(btn, lv_page_get_width_fit(list), 60);
+            lv_obj_set_size(btn, lv_page_get_width_fit(list), LIST_ITEM_HEIGHT);
             lv_obj_clean_style_list(btn, LV_BTN_PART_MAIN);
             lv_obj_add_style(btn, LV_BTN_PART_MAIN, &style_btn);
             lv_obj_add_protect(btn, LV_PROTECT_PRESS_LOST);
@@ -777,11 +787,11 @@ static void menu_btn_event_cb(lv_obj_t * btn, lv_event_t event)
             lv_obj_align(label_list, NULL, LV_ALIGN_CENTER, 0, 0);
 
             img_left =  lv_img_create(btn, NULL);
-            lv_img_set_src(img_left, "/nfsroot/hi3531d/v600/app/assert/misaligned-semicircle_28.png");
-            lv_obj_align(img_left, NULL, LV_ALIGN_IN_LEFT_MID, 50, 0);
+            lv_img_set_src(img_left, RES_ROOT"assert/misaligned-semicircle_40.png");
+            lv_obj_align(img_left, NULL, LV_ALIGN_IN_LEFT_MID, IMG_PAD, 0);
 
             img_right =  lv_img_create(btn, NULL);
-            lv_img_set_src(img_right, "/nfsroot/hi3531d/v600/app/assert/right_28.png");
+            lv_img_set_src(img_right, RES_ROOT"assert/right_28.png");
             lv_obj_align(img_right, NULL, LV_ALIGN_IN_RIGHT_MID, -10, 0);
 
             border = lv_img_create(btn, NULL);
@@ -791,7 +801,7 @@ static void menu_btn_event_cb(lv_obj_t * btn, lv_event_t event)
 
             btn = lv_obj_create(list, NULL);
 
-            lv_obj_set_size(btn, lv_page_get_width_fit(list), 60);
+            lv_obj_set_size(btn, lv_page_get_width_fit(list), LIST_ITEM_HEIGHT);
             lv_obj_clean_style_list(btn, LV_BTN_PART_MAIN);
             lv_obj_add_style(btn, LV_BTN_PART_MAIN, &style_btn);
             lv_obj_add_protect(btn, LV_PROTECT_PRESS_LOST);
@@ -805,11 +815,11 @@ static void menu_btn_event_cb(lv_obj_t * btn, lv_event_t event)
             lv_obj_align(label_list, NULL, LV_ALIGN_CENTER, 0, 0);
 
             img_left =  lv_img_create(btn, NULL);
-            lv_img_set_src(img_left, "/nfsroot/hi3531d/v600/app/assert/microphone_28.png");
-            lv_obj_align(img_left, NULL, LV_ALIGN_IN_LEFT_MID, 50, 0);
+            lv_img_set_src(img_left, RES_ROOT"assert/microphone_40.png");
+            lv_obj_align(img_left, NULL, LV_ALIGN_IN_LEFT_MID, IMG_PAD, 0);
 
             img_right =  lv_img_create(btn, NULL);
-            lv_img_set_src(img_right, "/nfsroot/hi3531d/v600/app/assert/right_28.png");
+            lv_img_set_src(img_right, RES_ROOT"assert/right_28.png");
             lv_obj_align(img_right, NULL, LV_ALIGN_IN_RIGHT_MID, -10, 0);
 
             border = lv_img_create(btn, NULL);
@@ -821,7 +831,7 @@ static void menu_btn_event_cb(lv_obj_t * btn, lv_event_t event)
             btn = lv_obj_create(list, NULL);
 
 
-            lv_obj_set_size(btn, lv_page_get_width_fit(list), 60);
+            lv_obj_set_size(btn, lv_page_get_width_fit(list), LIST_ITEM_HEIGHT);
             lv_obj_clean_style_list(btn, LV_BTN_PART_MAIN);
             lv_obj_add_style(btn, LV_BTN_PART_MAIN, &style_btn);
             lv_obj_add_protect(btn, LV_PROTECT_PRESS_LOST);
@@ -835,11 +845,11 @@ static void menu_btn_event_cb(lv_obj_t * btn, lv_event_t event)
             lv_obj_align(label_list, NULL, LV_ALIGN_CENTER, 0, 0);
 
             img_left =  lv_img_create(btn, NULL);
-            lv_img_set_src(img_left, "/nfsroot/hi3531d/v600/app/assert/connection-point_28.png");
-            lv_obj_align(img_left, NULL, LV_ALIGN_IN_LEFT_MID, 50, 0);
+            lv_img_set_src(img_left, RES_ROOT"assert/connection-point_40.png");
+            lv_obj_align(img_left, NULL, LV_ALIGN_IN_LEFT_MID, IMG_PAD, 0);
 
             img_right =  lv_img_create(btn, NULL);
-            lv_img_set_src(img_right, "/nfsroot/hi3531d/v600/app/assert/right_28.png");
+            lv_img_set_src(img_right, RES_ROOT"assert/right_28.png");
             lv_obj_align(img_right, NULL, LV_ALIGN_IN_RIGHT_MID, -10, 0);
 
             border = lv_img_create(btn, NULL);
@@ -849,7 +859,7 @@ static void menu_btn_event_cb(lv_obj_t * btn, lv_event_t event)
 
             btn = lv_obj_create(list, NULL);
 
-            lv_obj_set_size(btn, lv_page_get_width_fit(list), 60);
+            lv_obj_set_size(btn, lv_page_get_width_fit(list), LIST_ITEM_HEIGHT);
             lv_obj_clean_style_list(btn, LV_BTN_PART_MAIN);
             lv_obj_add_style(btn, LV_BTN_PART_MAIN, &style_btn);
             lv_obj_add_protect(btn, LV_PROTECT_PRESS_LOST);
@@ -863,11 +873,11 @@ static void menu_btn_event_cb(lv_obj_t * btn, lv_event_t event)
             lv_obj_align(label_list, NULL, LV_ALIGN_CENTER, 0, 0);
 
             img_left =  lv_img_create(btn, NULL);
-            lv_img_set_src(img_left, "/nfsroot/hi3531d/v600/app/assert/phone-video-call_28.png");
-            lv_obj_align(img_left, NULL, LV_ALIGN_IN_LEFT_MID, 50, 0);
+            lv_img_set_src(img_left, RES_ROOT"assert/phone-video-call_40.png");
+            lv_obj_align(img_left, NULL, LV_ALIGN_IN_LEFT_MID, IMG_PAD, 0);
 
             img_right =  lv_img_create(btn, NULL);
-            lv_img_set_src(img_right, "/nfsroot/hi3531d/v600/app/assert/right_28.png");
+            lv_img_set_src(img_right, RES_ROOT"assert/right_28.png");
             lv_obj_align(img_right, NULL, LV_ALIGN_IN_RIGHT_MID, -10, 0);
 
             border = lv_img_create(btn, NULL);
@@ -877,7 +887,7 @@ static void menu_btn_event_cb(lv_obj_t * btn, lv_event_t event)
 
             btn = lv_obj_create(list, NULL);
 
-            lv_obj_set_size(btn, lv_page_get_width_fit(list), 60);
+            lv_obj_set_size(btn, lv_page_get_width_fit(list), LIST_ITEM_HEIGHT);
             lv_obj_clean_style_list(btn, LV_BTN_PART_MAIN);
             lv_obj_add_style(btn, LV_BTN_PART_MAIN, &style_btn);
             lv_obj_add_protect(btn, LV_PROTECT_PRESS_LOST);
@@ -891,11 +901,11 @@ static void menu_btn_event_cb(lv_obj_t * btn, lv_event_t event)
             lv_obj_align(label_list, NULL, LV_ALIGN_CENTER, 0, 0);
 
             img_left =  lv_img_create(btn, NULL);
-            lv_img_set_src(img_left, "/nfsroot/hi3531d/v600/app/assert/text-message_28.png");
-            lv_obj_align(img_left, NULL, LV_ALIGN_IN_LEFT_MID, 50, 0);
+            lv_img_set_src(img_left, RES_ROOT"assert/text-message_40.png");
+            lv_obj_align(img_left, NULL, LV_ALIGN_IN_LEFT_MID, IMG_PAD, 0);
 
             img_right =  lv_img_create(btn, NULL);
-            lv_img_set_src(img_right, "/nfsroot/hi3531d/v600/app/assert/right_28.png");
+            lv_img_set_src(img_right, RES_ROOT"assert/right_28.png");
             lv_obj_align(img_right, NULL, LV_ALIGN_IN_RIGHT_MID, -10, 0);
 
             border = lv_img_create(btn, NULL);
@@ -914,7 +924,7 @@ static void menu_btn_event_cb(lv_obj_t * btn, lv_event_t event)
 
 
             lv_obj_t * btn = lv_obj_create(list, NULL);
-            lv_obj_set_size(btn, lv_page_get_width_fit(list), 60);
+            lv_obj_set_size(btn, lv_page_get_width_fit(list), LIST_ITEM_HEIGHT);
             lv_obj_clean_style_list(btn, LV_BTN_PART_MAIN);
             lv_obj_add_style(btn, LV_BTN_PART_MAIN, &style_btn);
             lv_obj_add_protect(btn, LV_PROTECT_PRESS_LOST);
@@ -928,11 +938,11 @@ static void menu_btn_event_cb(lv_obj_t * btn, lv_event_t event)
             lv_obj_align(label_list, NULL, LV_ALIGN_CENTER, 0, 0);
 
             lv_obj_t *img_left =  lv_img_create(btn, NULL);
-            lv_img_set_src(img_left, "/nfsroot/hi3531d/v600/app/assert/phone-call_28.png");
-            lv_obj_align(img_left, NULL, LV_ALIGN_IN_LEFT_MID, 50, 0);
+            lv_img_set_src(img_left, RES_ROOT"assert/phone-call_40.png");
+            lv_obj_align(img_left, NULL, LV_ALIGN_IN_LEFT_MID, IMG_PAD, 0);
 
             lv_obj_t *img_right =  lv_img_create(btn, NULL);
-            lv_img_set_src(img_right, "/nfsroot/hi3531d/v600/app/assert/right_28.png");
+            lv_img_set_src(img_right, RES_ROOT"assert/right_28.png");
             lv_obj_align(img_right, NULL, LV_ALIGN_IN_RIGHT_MID, -10, 0);
 
 
@@ -942,7 +952,7 @@ static void menu_btn_event_cb(lv_obj_t * btn, lv_event_t event)
             lv_obj_align(border, NULL, LV_ALIGN_IN_BOTTOM_MID, 0, 0);
 
             btn = lv_obj_create(list, NULL);
-            lv_obj_set_size(btn, lv_page_get_width_fit(list), 60);
+            lv_obj_set_size(btn, lv_page_get_width_fit(list), LIST_ITEM_HEIGHT);
             lv_obj_clean_style_list(btn, LV_BTN_PART_MAIN);
             lv_obj_add_style(btn, LV_BTN_PART_MAIN, &style_btn);
             lv_obj_add_protect(btn, LV_PROTECT_PRESS_LOST);
@@ -956,11 +966,11 @@ static void menu_btn_event_cb(lv_obj_t * btn, lv_event_t event)
             lv_obj_align(label_list, NULL, LV_ALIGN_CENTER, 0, 0);
 
             img_left =  lv_img_create(btn, NULL);
-            lv_img_set_src(img_left, "/nfsroot/hi3531d/v600/app/assert/tool_28.png");
-            lv_obj_align(img_left, NULL, LV_ALIGN_IN_LEFT_MID, 50, 0);
+            lv_img_set_src(img_left, RES_ROOT"assert/tool_40.png");
+            lv_obj_align(img_left, NULL, LV_ALIGN_IN_LEFT_MID, IMG_PAD, 0);
 
             img_right =  lv_img_create(btn, NULL);
-            lv_img_set_src(img_right, "/nfsroot/hi3531d/v600/app/assert/right_28.png");
+            lv_img_set_src(img_right, RES_ROOT"assert/right_28.png");
             lv_obj_align(img_right, NULL, LV_ALIGN_IN_RIGHT_MID, -10, 0);
 
             border = lv_img_create(btn, NULL);
@@ -969,7 +979,7 @@ static void menu_btn_event_cb(lv_obj_t * btn, lv_event_t event)
             lv_obj_align(border, NULL, LV_ALIGN_IN_BOTTOM_MID, 0, 0);
 
             btn = lv_obj_create(list, NULL);
-            lv_obj_set_size(btn, lv_page_get_width_fit(list), 60);
+            lv_obj_set_size(btn, lv_page_get_width_fit(list), LIST_ITEM_HEIGHT);
             lv_obj_clean_style_list(btn, LV_BTN_PART_MAIN);
             lv_obj_add_style(btn, LV_BTN_PART_MAIN, &style_btn);
             lv_obj_add_protect(btn, LV_PROTECT_PRESS_LOST);
@@ -983,11 +993,11 @@ static void menu_btn_event_cb(lv_obj_t * btn, lv_event_t event)
             lv_obj_align(label_list, NULL, LV_ALIGN_CENTER, 0, 0);
 
             img_left =  lv_img_create(btn, NULL);
-            lv_img_set_src(img_left, "/nfsroot/hi3531d/v600/app/assert/every-user_28.png");
-            lv_obj_align(img_left, NULL, LV_ALIGN_IN_LEFT_MID, 50, 0);
+            lv_img_set_src(img_left, RES_ROOT"assert/every-user_40.png");
+            lv_obj_align(img_left, NULL, LV_ALIGN_IN_LEFT_MID, IMG_PAD, 0);
 
             img_right =  lv_img_create(btn, NULL);
-            lv_img_set_src(img_right, "/nfsroot/hi3531d/v600/app/assert/right_28.png");
+            lv_img_set_src(img_right, RES_ROOT"assert/right_28.png");
             lv_obj_align(img_right, NULL, LV_ALIGN_IN_RIGHT_MID, -10, 0);
 
 
@@ -997,7 +1007,7 @@ static void menu_btn_event_cb(lv_obj_t * btn, lv_event_t event)
             lv_obj_align(border, NULL, LV_ALIGN_IN_BOTTOM_MID, 0, 0);
 
             btn = lv_obj_create(list, NULL);
-            lv_obj_set_size(btn, lv_page_get_width_fit(list), 60);
+            lv_obj_set_size(btn, lv_page_get_width_fit(list), LIST_ITEM_HEIGHT);
             lv_obj_clean_style_list(btn, LV_BTN_PART_MAIN);
             lv_obj_add_style(btn, LV_BTN_PART_MAIN, &style_btn);
             lv_obj_add_protect(btn, LV_PROTECT_PRESS_LOST);
@@ -1011,11 +1021,11 @@ static void menu_btn_event_cb(lv_obj_t * btn, lv_event_t event)
             lv_obj_align(label_list, NULL, LV_ALIGN_CENTER, 0, 0);
 
             img_left =  lv_img_create(btn, NULL);
-            lv_img_set_src(img_left, "/nfsroot/hi3531d/v600/app/assert/video-file_28.png");
-            lv_obj_align(img_left, NULL, LV_ALIGN_IN_LEFT_MID, 50, 0);
+            lv_img_set_src(img_left, RES_ROOT"assert/video-file_40.png");
+            lv_obj_align(img_left, NULL, LV_ALIGN_IN_LEFT_MID, IMG_PAD, 0);
 
             img_right =  lv_img_create(btn, NULL);
-            lv_img_set_src(img_right, "/nfsroot/hi3531d/v600/app/assert/right_28.png");
+            lv_img_set_src(img_right, RES_ROOT"assert/right_28.png");
             lv_obj_align(img_right, NULL, LV_ALIGN_IN_RIGHT_MID, -10, 0);
 
 
@@ -1107,7 +1117,7 @@ static lv_obj_t * add_list_btn(lv_obj_t *page, uint8_t list_id)
     lv_snprintf(time, sizeof(time), "list_%02d",list_id);
 
     lv_obj_t * btn = lv_obj_create(page, NULL);
-    lv_obj_set_size(btn, lv_page_get_width_fit(page), 60);
+    lv_obj_set_size(btn, lv_page_get_width_fit(page), LIST_ITEM_HEIGHT);
     lv_obj_clean_style_list(btn, LV_BTN_PART_MAIN);
     lv_obj_add_style(btn, LV_BTN_PART_MAIN, &style_btn);
     lv_obj_add_protect(btn, LV_PROTECT_PRESS_LOST);
@@ -1238,10 +1248,10 @@ static void* lvgl_main(void* p)
     lv_disp_set_bg_opa(NULL, LV_OPA_TRANSP);
 
     // font init
-    font_smallest = &puhui_regular_18;
-    font_small = &puhui_regular_20;
-    font_medium = &puhui_regular_24;
-    font_title = &puhui_regular_28;
+    font_smallest = &puhui_regular_32;//&puhui_regular_18;
+    font_small = &puhui_regular_36;//&puhui_regular_28;//&puhui_regular_20;
+    font_medium = &puhui_regular_42;//&puhui_regular_32;//&puhui_regular_24;
+    font_title = &puhui_regular_50;//&puhui_regular_28;
 
     // style init
     lv_style_init(&style_scrollbar);
@@ -1276,6 +1286,8 @@ static void* lvgl_main(void* p)
 #else
     lv_style_set_image_recolor_opa(&style_img_btn, LV_STATE_FOCUSED, LV_OPA_COVER);
     lv_style_set_image_recolor(&style_img_btn, LV_STATE_FOCUSED, lv_color_hex(0x19d3da)/* lv_color_hex(COLOR_FOCUS) */);
+    lv_style_set_image_recolor_opa(&style_img_btn, LV_STATE_CHECKED, LV_OPA_COVER);
+    lv_style_set_image_recolor(&style_img_btn, LV_STATE_CHECKED, lv_color_hex(COLOR_FOCUS)/* lv_color_hex(COLOR_FOCUS) */);
 #endif
 
     // outline for focused
@@ -1296,7 +1308,7 @@ static void* lvgl_main(void* p)
 
     // main container init
     main_page = lv_page_create(lv_scr_act(), NULL);
-    lv_obj_set_size(main_page, 300, lv_obj_get_height_fit(lv_scr_act()) - 20);
+    lv_obj_set_size(main_page, 450, lv_obj_get_height_fit(lv_scr_act()) - 20);
     lv_obj_align(main_page, NULL, LV_ALIGN_IN_TOP_LEFT, 10, 10);
 
 
@@ -1325,7 +1337,7 @@ static void* lvgl_main(void* p)
     lv_obj_set_style_local_bg_color(cont_img_menu, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, /* lv_color_hex(0x65675c) */ lv_color_hex(COLOR_MENU_BG));
     lv_obj_set_style_local_border_width(cont_img_menu, LV_OBJ_PART_MAIN, LV_STATE_DEFAULT, 0);
     lv_obj_set_click(cont_img_menu, false);
-    lv_obj_set_size(cont_img_menu, lv_obj_get_width_fit(main_page) - 2 * 10, 50);
+    lv_obj_set_size(cont_img_menu, lv_obj_get_width_fit(main_page) - 2 * 10, LIST_ITEM_HEIGHT);
     lv_obj_align(cont_img_menu, label_title, LV_ALIGN_OUT_BOTTOM_LEFT, - lv_obj_get_x(label_title) + 10, 10);
     lv_cont_set_layout(cont_img_menu, LV_LAYOUT_ROW_MID);
 
@@ -1333,45 +1345,51 @@ static void* lvgl_main(void* p)
 
     lv_obj_add_style(btn_setting, LV_IMGBTN_PART_MAIN, &style_img_btn);
 
-
-    lv_imgbtn_set_src(btn_setting, LV_BTN_STATE_RELEASED, "/nfsroot/hi3531d/v600/app/assert/btn_setting_normal.png");
-    lv_imgbtn_set_src(btn_setting, LV_BTN_STATE_CHECKED_RELEASED, "/nfsroot/hi3531d/v600/app/assert/btn_setting_focus.png");
-    lv_imgbtn_set_src(btn_setting, LV_BTN_STATE_CHECKED_PRESSED,"/nfsroot/hi3531d/v600/app/assert/btn_setting_focus.png");
-    lv_imgbtn_set_src(btn_setting, LV_BTN_STATE_PRESSED,"/nfsroot/hi3531d/v600/app/assert/btn_setting_normal.png");
-
-    lv_imgbtn_set_src(btn_setting, LV_BTN_STATE_RELEASED, "/nfsroot/hi3531d/v600/app/assert/btn_setting_normal.png");
-    lv_imgbtn_set_src(btn_setting, LV_BTN_STATE_CHECKED_RELEASED, "/nfsroot/hi3531d/v600/app/assert/btn_setting_focus.png");
-    lv_imgbtn_set_src(btn_setting, LV_BTN_STATE_CHECKED_PRESSED,"/nfsroot/hi3531d/v600/app/assert/btn_setting_focus.png");
-    lv_imgbtn_set_src(btn_setting, LV_BTN_STATE_PRESSED,"/nfsroot/hi3531d/v600/app/assert/btn_setting_normal.png");
-
+#if 0
+    lv_imgbtn_set_src(btn_setting, LV_BTN_STATE_RELEASED, RES_ROOT"assert/btn_setting_normal.png");
+    lv_imgbtn_set_src(btn_setting, LV_BTN_STATE_CHECKED_RELEASED, RES_ROOT"assert/btn_setting_focus.png");
+    lv_imgbtn_set_src(btn_setting, LV_BTN_STATE_CHECKED_PRESSED,RES_ROOT"assert/btn_setting_focus.png");
+    lv_imgbtn_set_src(btn_setting, LV_BTN_STATE_PRESSED,RES_ROOT"assert/btn_setting_normal.png");
+#else
+    lv_imgbtn_set_src(btn_setting, LV_BTN_STATE_RELEASED, RES_ROOT"assert/setting-two_48.png");
+#endif
 
 
     btn_video = lv_imgbtn_create(cont_img_menu, NULL);
 
     lv_obj_add_style(btn_video, LV_IMGBTN_PART_MAIN, &style_img_btn);
-    lv_imgbtn_set_src(btn_video, LV_BTN_STATE_RELEASED, "/nfsroot/hi3531d/v600/app/assert/btn_video_normal.png");
-    lv_imgbtn_set_src(btn_video, LV_BTN_STATE_CHECKED_RELEASED, "/nfsroot/hi3531d/v600/app/assert/btn_video_focus.png");
-    lv_imgbtn_set_src(btn_video, LV_BTN_STATE_CHECKED_PRESSED, "/nfsroot/hi3531d/v600/app/assert/btn_video_focus.png");
-    lv_imgbtn_set_src(btn_video, LV_BTN_STATE_PRESSED, "/nfsroot/hi3531d/v600/app/assert/btn_video_normal.png");
-
+#if 0
+    lv_imgbtn_set_src(btn_video, LV_BTN_STATE_RELEASED, RES_ROOT"assert/btn_video_normal.png");
+    lv_imgbtn_set_src(btn_video, LV_BTN_STATE_CHECKED_RELEASED, RES_ROOT"assert/btn_video_focus.png");
+    lv_imgbtn_set_src(btn_video, LV_BTN_STATE_CHECKED_PRESSED, RES_ROOT"assert/btn_video_focus.png");
+    lv_imgbtn_set_src(btn_video, LV_BTN_STATE_PRESSED, RES_ROOT"assert/btn_video_normal.png");
+#else
+    lv_imgbtn_set_src(btn_video, LV_BTN_STATE_RELEASED, RES_ROOT"assert/videocamera-one_48.png");
+#endif
 
     btn_stat = lv_imgbtn_create(cont_img_menu, NULL);
 
     lv_obj_add_style(btn_stat, LV_IMGBTN_PART_MAIN, &style_img_btn);
-    lv_imgbtn_set_src(btn_stat, LV_BTN_STATE_RELEASED, "/nfsroot/hi3531d/v600/app/assert/btn_stat_normal.png");
-    lv_imgbtn_set_src(btn_stat, LV_BTN_STATE_CHECKED_RELEASED, "/nfsroot/hi3531d/v600/app/assert/btn_stat_focus.png");
-    lv_imgbtn_set_src(btn_stat, LV_BTN_STATE_CHECKED_PRESSED, "/nfsroot/hi3531d/v600/app/assert/btn_stat_focus.png");
-    lv_imgbtn_set_src(btn_stat, LV_BTN_STATE_PRESSED, "/nfsroot/hi3531d/v600/app/assert/btn_stat_normal.png");
-
+#if 0
+    lv_imgbtn_set_src(btn_stat, LV_BTN_STATE_RELEASED, RES_ROOT"assert/btn_stat_normal.png");
+    lv_imgbtn_set_src(btn_stat, LV_BTN_STATE_CHECKED_RELEASED, RES_ROOT"assert/btn_stat_focus.png");
+    lv_imgbtn_set_src(btn_stat, LV_BTN_STATE_CHECKED_PRESSED, RES_ROOT"assert/btn_stat_focus.png");
+    lv_imgbtn_set_src(btn_stat, LV_BTN_STATE_PRESSED, RES_ROOT"assert/btn_stat_normal.png");
+#else
+    lv_imgbtn_set_src(btn_stat, LV_BTN_STATE_RELEASED, RES_ROOT"assert/analysis_48.png");
+#endif
 
     btn_dialnose = lv_imgbtn_create(cont_img_menu, NULL);
 
     lv_obj_add_style(btn_dialnose, LV_IMGBTN_PART_MAIN, &style_img_btn);
-    lv_imgbtn_set_src(btn_dialnose, LV_BTN_STATE_RELEASED, "/nfsroot/hi3531d/v600/app/assert/btn_dialnose_normal.png");
-    lv_imgbtn_set_src(btn_dialnose, LV_BTN_STATE_CHECKED_RELEASED, "/nfsroot/hi3531d/v600/app/assert/btn_dialnose_focus.png");
-    lv_imgbtn_set_src(btn_dialnose, LV_BTN_STATE_CHECKED_PRESSED, "/nfsroot/hi3531d/v600/app/assert/btn_dialnose_focus.png");
-    lv_imgbtn_set_src(btn_dialnose, LV_BTN_STATE_PRESSED, "/nfsroot/hi3531d/v600/app/assert/btn_dialnose_normal.png");
-
+#if 0
+    lv_imgbtn_set_src(btn_dialnose, LV_BTN_STATE_RELEASED, RES_ROOT"assert/btn_dialnose_normal.png");
+    lv_imgbtn_set_src(btn_dialnose, LV_BTN_STATE_CHECKED_RELEASED, RES_ROOT"assert/btn_dialnose_focus.png");
+    lv_imgbtn_set_src(btn_dialnose, LV_BTN_STATE_CHECKED_PRESSED, RES_ROOT"assert/btn_dialnose_focus.png");
+    lv_imgbtn_set_src(btn_dialnose, LV_BTN_STATE_PRESSED, RES_ROOT"assert/btn_dialnose_normal.png");
+#else
+    lv_imgbtn_set_src(btn_dialnose, LV_BTN_STATE_RELEASED, RES_ROOT"assert/info_48.png");
+#endif
     /*Create an empty white main container*/
     list = lv_page_create(main_page, NULL);
     lv_obj_set_size(list, lv_obj_get_width_fit(main_page), lv_obj_get_height_fit(main_page) - lv_obj_get_y(cont_img_menu)- lv_obj_get_height(cont_img_menu) - 20);

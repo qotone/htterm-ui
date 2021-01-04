@@ -57,11 +57,13 @@ set(LV_SETLIST_SRC
     )
 
 set(FONTS
-    font/puhui_regular_16.c
-    font/puhui_regular_18.c
-    font/puhui_regular_20.c
+    font/puhui_regular_50.c
+    font/puhui_regular_42.c
+    font/puhui_regular_36.c
+    font/puhui_regular_32.c
     font/puhui_regular_24.c
     font/puhui_regular_28.c
+    font/puhui_regular_20.c
     )
 
 set(UI
@@ -141,13 +143,13 @@ set(LVGL_SRCS
     ${LVGL_PATH}/lvgl/src/lv_font/lv_font_loader.c
     # ${LVGL_PATH}/lvgl/src/lv_font/lv_font_montserrat_12.c
     # ${LVGL_PATH}/lvgl/src/lv_font/lv_font_montserrat_14.c
-    ${LVGL_PATH}/lvgl/src/lv_font/lv_font_montserrat_16.c
+    # ${LVGL_PATH}/lvgl/src/lv_font/lv_font_montserrat_16.c
     # ${LVGL_PATH}/lvgl/src/lv_font/lv_font_montserrat_18.c
     # ${LVGL_PATH}/lvgl/src/lv_font/lv_font_montserrat_20.c
     # ${LVGL_PATH}/lvgl/src/lv_font/lv_font_montserrat_22.c
-    # ${LVGL_PATH}/lvgl/src/lv_font/lv_font_montserrat_24.c
+    ${LVGL_PATH}/lvgl/src/lv_font/lv_font_montserrat_24.c
     # ${LVGL_PATH}/lvgl/src/lv_font/lv_font_montserrat_26.c
-    # ${LVGL_PATH}/lvgl/src/lv_font/lv_font_montserrat_28.c
+    ${LVGL_PATH}/lvgl/src/lv_font/lv_font_montserrat_28.c
     # ${LVGL_PATH}/lvgl/src/lv_font/lv_font_montserrat_30.c
     # ${LVGL_PATH}/lvgl/src/lv_font/lv_font_montserrat_32.c
     # ${LVGL_PATH}/lvgl/src/lv_font/lv_font_montserrat_34.c
